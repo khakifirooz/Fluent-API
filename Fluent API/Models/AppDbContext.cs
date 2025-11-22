@@ -6,6 +6,7 @@ namespace Fluent_API.Models;
 public class AppDbContext : DbContext
 {
     public DbSet<Employee> Employees { get; set; }
+    public DbSet<Authors> Authors { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var configBulder = new ConfigurationBuilder();
@@ -19,7 +20,7 @@ public class AppDbContext : DbContext
     {
         modelBuilder.HasDefaultSchema("HR");
        // modelBuilder.Entity<Employee>().HasKey(e => e.Id);  // choosing primarykey
-        modelBuilder.Entity<Employee>().HasKey(x => new { x.Name, x.Family });  // mixed primarykey
+       // modelBuilder.Entity<Employee>().HasKey(x => new { x.Name, x.Family });  // mixed primarykey
                                                                                 //  modelBuilder.Ignore<Employee>(); // not mapping
 
         //properties:
@@ -34,10 +35,17 @@ public class AppDbContext : DbContext
             .Property(x => x.Family)
             .HasColumnOrder(1)
             .HasMaxLength(100)
-            .IsRequired(false);
+            .IsRequired(true);
 
         modelBuilder.Entity<Employee>()
             .Property(x => x.Id)
             .HasColumnOrder(2);
+
+        modelBuilder.Entity<Authors>()
+            .Property(x => x.Name)
+            .HasColumnType("nvarchar(50)")
+            .HasColumnOrder(2);
+
+        modelBuilder.Entity<Authors>().HasKey(x => new { x.Name });
     }
 }

@@ -14,23 +14,42 @@ namespace Fluent_API.Migrations
                 name: "HR");
 
             migrationBuilder.CreateTable(
+                name: "Authors",
+                schema: "HR",
+                columns: table => new
+                {
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Authors", x => x.Name);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Employees",
                 schema: "HR",
                 columns: table => new
                 {
                     FirstName = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Family = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Family = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => new { x.FirstName, x.Family });
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                 });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Authors",
+                schema: "HR");
+
             migrationBuilder.DropTable(
                 name: "Employees",
                 schema: "HR");

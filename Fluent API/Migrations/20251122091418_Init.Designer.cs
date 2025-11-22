@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fluent_API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251122085733_Mixed-Primary")]
-    partial class MixedPrimary
+    [Migration("20251122091418_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,8 @@ namespace Fluent_API.Migrations
             modelBuilder.Entity("Fluent_API.Models.Employee", b =>
                 {
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("FirstName");
 
                     b.Property<string>("Family")
                         .HasColumnType("nvarchar(450)");

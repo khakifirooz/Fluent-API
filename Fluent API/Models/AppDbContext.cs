@@ -20,5 +20,12 @@ public class AppDbContext : DbContext
         modelBuilder.HasDefaultSchema("HR");
        // modelBuilder.Entity<Employee>().HasKey(e => e.Id);  // choosing primarykey
         modelBuilder.Entity<Employee>().HasKey(x => new { x.Name, x.Family });  // mixed primarykey
+                                                                                //  modelBuilder.Ignore<Employee>(); // not mapping
+
+        //properties:
+        modelBuilder.Entity<Employee>()
+            .Property(x => x.Name)
+            .HasColumnName("FirstName")
+            .HasColumnType("nvarchar(50)");
     }
 }

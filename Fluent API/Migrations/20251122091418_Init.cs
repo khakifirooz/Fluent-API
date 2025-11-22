@@ -18,14 +18,13 @@ namespace Fluent_API.Migrations
                 schema: "HR",
                 columns: table => new
                 {
+                    FirstName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Family = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Family = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
+                    table.PrimaryKey("PK_Employees", x => new { x.FirstName, x.Family });
                 });
         }
 

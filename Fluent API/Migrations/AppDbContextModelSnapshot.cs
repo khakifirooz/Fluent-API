@@ -25,7 +25,8 @@ namespace Fluent_API.Migrations
             modelBuilder.Entity("Fluent_API.Models.Employee", b =>
                 {
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("FirstName");
 
                     b.Property<string>("Family")
                         .HasColumnType("nvarchar(450)");

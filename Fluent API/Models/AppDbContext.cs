@@ -31,7 +31,8 @@ public class AppDbContext : DbContext
 
         modelBuilder.Entity<Employee>()
             .Property(x => x.Family)
-            .HasColumnOrder(1);
+            .HasColumnOrder(1)
+            .HasMaxLength(100);
 
         modelBuilder.Entity<Employee>()
             .Property(x => x.Id)

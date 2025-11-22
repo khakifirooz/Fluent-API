@@ -26,6 +26,15 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Employee>()
             .Property(x => x.Name)
             .HasColumnName("FirstName")
-            .HasColumnType("nvarchar(50)");
+            .HasColumnType("nvarchar(50)")
+            .HasColumnOrder(0);
+
+        modelBuilder.Entity<Employee>()
+            .Property(x => x.Family)
+            .HasColumnOrder(1);
+
+        modelBuilder.Entity<Employee>()
+            .Property(x => x.Id)
+            .HasColumnOrder(2);
     }
 }

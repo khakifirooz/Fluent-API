@@ -27,12 +27,14 @@ public class AppDbContext : DbContext
             .Property(x => x.Name)
             .HasColumnName("FirstName")
             .HasColumnType("nvarchar(50)")
-            .HasColumnOrder(0);
+            .HasColumnOrder(0)
+            .IsRequired(true);
 
         modelBuilder.Entity<Employee>()
             .Property(x => x.Family)
             .HasColumnOrder(1)
-            .HasMaxLength(100);
+            .HasMaxLength(100)
+            .IsRequired(false);
 
         modelBuilder.Entity<Employee>()
             .Property(x => x.Id)

@@ -23,7 +23,7 @@ public class AppDbContext : DbContext
                                                                                 //  modelBuilder.Ignore<Employee>(); // not mapping
 
         //properties:
-        modelBuilder.Entity<Employee>()
+        modelBuilder.Entity<Employee>()  // .Ignore();   for not mapping this property
             .Property(x => x.Name)
             .HasColumnName("FirstName")
             .HasColumnType("nvarchar(50)")

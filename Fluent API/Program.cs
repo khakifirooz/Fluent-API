@@ -13,8 +13,17 @@ var context = new AppDbContext();
 
 //context.SaveChanges();
 
-var result = context.Authors.First(x => x.Name == "Abas");
-Console.WriteLine(result.Name);
+//var result = context.Authors.First(x => x.Name == "Abas");
+//Console.WriteLine(result.Name);
+
+var result = context.Authors.ToList();
+foreach (var item in result)
+    Console.WriteLine($"name: {item.Name}");
+
+//var result = context.Authors.Select(x => x.Age).Where(x => x >=50);
+//foreach (var item in result)
+//    Console.WriteLine(item);
+
 
 
 Console.ReadKey();

@@ -18,5 +18,7 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema("HR");
+       // modelBuilder.Entity<Employee>().HasKey(e => e.Id);  // choosing primarykey
+        modelBuilder.Entity<Employee>().HasKey(x => new { x.Name, x.Family });  // mixed primarykey
     }
 }

@@ -28,11 +28,15 @@ using Fluent_API.Models;
 
 // Asynchronous programming with ef core
 
+var person = new Person("Mehrshad","Khaki");
+await CreateAsync(person);
+Console.WriteLine("procces in main is working");
 static async Task CreateAsync(Person person)
 {
     using var context = new AppDbContext();
     context.Person.Add(person);
-    context.SaveChangesAsync();
+    await context.SaveChangesAsync();
+    Console.WriteLine("succeeded");
 }
 
 

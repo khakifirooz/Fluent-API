@@ -64,6 +64,27 @@ namespace Fluent_API.Migrations
 
                     b.ToTable("Employees", "HR");
                 });
+
+            modelBuilder.Entity("Fluent_API.Models.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Family")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Person", "HR");
+                });
 #pragma warning restore 612, 618
         }
     }

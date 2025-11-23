@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fluent_API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251122102752_Init")]
+    [Migration("20251123160719_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -66,6 +66,27 @@ namespace Fluent_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employees", "HR");
+                });
+
+            modelBuilder.Entity("Fluent_API.Models.Person", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Family")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Person", "HR");
                 });
 #pragma warning restore 612, 618
         }

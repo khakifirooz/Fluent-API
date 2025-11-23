@@ -7,6 +7,7 @@ public class AppDbContext : DbContext
 {
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Authors> Authors { get; set; }
+    public DbSet<Person> Person {  get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var configBulder = new ConfigurationBuilder();

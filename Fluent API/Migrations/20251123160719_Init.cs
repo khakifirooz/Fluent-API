@@ -41,6 +41,21 @@ namespace Fluent_API.Migrations
                 {
                     table.PrimaryKey("PK_Employees", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Person",
+                schema: "HR",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Family = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Person", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -52,6 +67,10 @@ namespace Fluent_API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Employees",
+                schema: "HR");
+
+            migrationBuilder.DropTable(
+                name: "Person",
                 schema: "HR");
         }
     }
